@@ -1,11 +1,11 @@
+import React from 'react';
 
-function HomePage() {
-  return (
-
-    <>
-        <h1> HomePage </h1>
-    </>
-  );
+const HomePage = (props) => {
+    return (
+        <div>
+            <h1>Home Page</h1>
+        </div>
+    )
 }
 
 export default HomePage;
