@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactPage from './pages/ContactPage';
@@ -9,7 +10,6 @@ import ProductsPage from './pages/ProductsPage';
 
 function App() {
   return (
-
     <BrowserRouter>
       <Header/>
         <Routes>
@@ -20,8 +20,8 @@ function App() {
             <Route path='/contact' element={ <ContactPage/>} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
+      <Footer />
     </BrowserRouter>
-
   );
 }
 
