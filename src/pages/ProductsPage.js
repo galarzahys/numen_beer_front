@@ -14,7 +14,10 @@ const ProductsPage = (props) => {
           <p>Cargando...</p>
         ) : ( products.map(item => {
             return (
+                <div>
             <h2>{item.name}</h2>
+            <p>{item.price}</p>
+            </div>
             )
         })
             
