@@ -53,6 +53,7 @@ const ContactForm = () => {
           initialValues={{
             firstName: "",
             lastName: "",
+            phone: "",
             email: "",
             comments: "",
             acceptedTerms: false,
@@ -64,6 +65,9 @@ const ContactForm = () => {
             lastName: Yup.string()
               .max(20, "Máximo 20 caracteres!")
               .required("Requerido!"),
+            phone: Yup.string()
+              .min(10, "Mínimo 10 caracteres!")
+              .required("Requerido!"),  
             email: Yup.string()
               .email("Dirección email incorrecta!")
               .required("Requerido!"),
@@ -102,6 +106,13 @@ const ContactForm = () => {
               name="lastName"
               type="text"
               placeholder="Lopez"
+            />
+
+            <MyTextInput
+              label="Telefono"
+              name="phone"
+              type="int"
+              placeholder="111111111"
             />
 
             <MyTextInput
