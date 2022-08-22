@@ -2,62 +2,54 @@ import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInstagram, faWhatsapp, faFacebook} from '@fortawesome/free-brands-svg-icons';
 import cerveza from '../assets/images/cervezaLogo.png'
+import './footer.css'
  
 const Footer = () => {
   return (
     <>  
-        <footer className="footer" style={footer}>
-
-            {/* SECTION REDES */}
-            <div className="icon-container" style={icon}>
-                <div>
-                    <h2>Tell a frind</h2>
-                </div>
-                <div className="icon-container" style={{fontSize:"2em"}}>
-                    <FontAwesomeIcon icon={faFacebook}/>{"  "}
-                    <FontAwesomeIcon icon={faInstagram}/>{"  "}
-                    <FontAwesomeIcon icon={faWhatsapp}/>{"  "}
-                </div>
+    <footer>
+        {/* SECTION REDES */}
+        <div className="icon-container">
+            <div>
+                <h2>Tell a frind</h2>
             </div>
-
-            {/* SECTION LINK */}
-            <div className="link-container">
-                <div className="ul-container">
-                    <img src={cerveza} alt="cerveza" style={img}/>
-                    <h3></h3>
-                    <ul>
-                        <li className="Nav_item">
-                        <Link className="Nav_link" to="/aboutUs">Nosotros</Link>
-                        </li>
-                        <li className="Nav_item">
-                        <Link className="Nav_link" to="/products">Productos</Link>
-                        </li>
-                        <li className="Nav_item">
-                        <Link className="Nav__link" to="/e-Shop">Tienda</Link>
-                        </li>
-                        <li className="Nav_item">
-                        <Link className="Nav_link" to="/contact">Contacto</Link>
-                        </li>
-                    </ul>
-                </div>
+            <div>
+                <Link to="#"><FontAwesomeIcon className='icon' icon={faFacebook}/></Link>
+                <Link to="#"><FontAwesomeIcon className='icon' icon={faInstagram}/></Link>
+                <Link to="#"><FontAwesomeIcon className='icon' icon={faWhatsapp}/></Link>
             </div>
-        </footer>
+        </div>
+        {/* SECTION LINK */}
+        <div className="link-container">
+            <div className='img_container' >
+                <Link to="/"><img src={cerveza} alt="cerveza" style={img}/></Link>
+            </div>
+            <div className="ul-container">
+                <ul className='ul-footer'>
+                    <li className="footer_item">
+                    <Link className="footer__link" to="/aboutUs">Nosotros</Link>
+                    </li>
+                    <li className="footer_item">
+                    <Link className="footer__link" to="/products">Productos</Link>
+                    </li>
+                    <li className="footer_item">
+                    <Link className="footer__link" to="/e-Shop">Tienda</Link>
+                    </li>
+                    <li className="footer_item">
+                    <Link className="footer__link" to="/contact">Contacto</Link>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
     </>
   )
 }
 
 export default Footer
-const footer = {
-    color: '#DCECDF',
-    backgroundColor: '#00382A',
-    height: '60vh',
-}
 
-const icon = {
-    color: '#00382A',
-    backgroundColor: '#D8EC8A',
-    height: '15vh',
-}
+
+
 
 const img = {
     height: '150px'
