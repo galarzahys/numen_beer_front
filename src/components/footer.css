@@ -8,23 +8,28 @@
     align-items: center;
     background-color: #D8EC8A;
     height: 20vh;
-    width: 100%;  
+    width: 100%; 
  }
 
  .icon {
-    background-color: #00382A;
-    color: #D8EC8A;
-    font-size: 2rem;
+    background-color: #D8EC8A;
+    font-size: 2.5rem;
     margin: 0px 0px 20px 20px;
     padding: 7px;
     border-radius: 50px;
  }
 
  .icon:hover {
-    color: white;
+   color: white;
  }
 
- .img_container{
+ h2 {
+   color: #00382A;
+ }
+
+  /* --Link Containers-- */
+
+.img_container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,12 +37,6 @@
     background-color: #D8EC8A;
     border-radius: 100px;
  }
-
- h2 {
-    color: #00382A;
- }
-
-  /* --Link Containers-- */
 
  .img_container:hover{
     background-color: white;
@@ -69,7 +68,6 @@
  .footer__link {
     text-decoration: none;
     color: #D8EC8A;
-    font-weight: bold;
  }
 
  .footer__link:hover {
