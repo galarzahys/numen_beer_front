@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
-import './Header.css'
+import './Header.css';
+import IconButton from '@mui/material/IconButton';
+import { Badge } from '@mui/material';
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
+
+
 
 
 const Header = () => {
+
+
     return (
     <>
         <nav className="Nav">
             <div className="Nav_container">
-                <Link to="/Home" className="Nav_brand">
-                <img src="https://th.bing.com/th/id/OIP.mxpZIyYO6XkO9U0M0T11RQHaHi?w=163&h=180&c=7&r=0&o=5&pid=1.7" className="Nav_logo" />
+                <Link to="/" className="Nav_brand">
+                <img src="./images/Logo NB.png" className="Nav_logo" alt="logo_numen_beer" />
                 </Link>
                 <div className="Nav_center">
                     <ul className="Nav_item-wrapper">
@@ -35,7 +42,25 @@ const Header = () => {
                     <button> Login </button>
                     </li>
                     <li className="Nav_item_2">
-                    <button> Carrito de Compras </button>
+                    <Link to={"/checkout"}>
+                        <IconButton>
+                            <Badge badgeContent={0} color="success">
+                            <ShoppingCart fontSize="large"/>
+                            </Badge>
+                        </IconButton>
+                    </Link>
+                    </li>
+                    <li className="Nav_item_2">
+                    <Link className='linke' to={``}>
+                                <div className='user_data'>
+                                <p>{`Hola, usuario!`}</p>
+                                    <div className="user_avatar" style={{
+                                    backgroundImage: `url('./images/user.jpeg')`,
+                                     }}>
+                                    </div>
+                                
+                                </div>
+                                </Link>
                     </li>
                 </ul>
                 </div>

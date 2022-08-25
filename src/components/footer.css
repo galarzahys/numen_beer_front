@@ -34,13 +34,15 @@
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    background-color: #D8EC8A;
-    border-radius: 100px;
  }
 
- .img_container:hover{
-    background-color: white;
+ h2 {
+    color: #00382A;
  }
+
+  /* --Link Containers-- */
+
+
 
  .link-container {
     display: grid;
