@@ -91,7 +91,8 @@ const ContactForm = () => {
               textAlign: "center",
               justifyContent: "center",
               height: "75vh",
-              fontWeight: "bold"
+              fontWeight: "bold",
+              padding: "20px"
             }}
           >
             <MyTextInput

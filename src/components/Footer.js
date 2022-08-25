@@ -22,7 +22,7 @@ const Footer = () => {
         {/* SECTION LINK */}
         <div className="link-container">
             <div className='img_container' >
-                <Link to="/"><img src={cerveza} alt="cerveza" style={img}/></Link>
+                <Link to="/"><img src="./images/Logo NB.png" alt="cerveza" style={img}/></Link>
             </div>
             <div className="ul-container">
                 <ul className='ul-footer'>
