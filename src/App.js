@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import Carrusel from './components/Carrusel';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import AboutUsPage from './pages/AboutUsPage';
@@ -20,6 +21,7 @@ function App() {
             <Route path='/contact' element={ <ContactPage/>} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
+      <Carrusel />
       <Footer />
     </BrowserRouter>
   );
