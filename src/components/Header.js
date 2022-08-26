@@ -19,6 +19,9 @@ const Header = () => {
                 </Link>
                 <div className="Nav_center">
                     <ul className="Nav_item-wrapper">
+                    <li className="Nav_item">
+                        <Link className="Nav_link" to="/Home">Home</Link>
+                        </li>
                         <li className="Nav_item">
                         <Link className="Nav_link" to="/aboutUs">Nosotros</Link>
                         </li>
@@ -56,7 +59,7 @@ const Header = () => {
                                 <p>{`Hola, usuario!`}</p>
                                     <div className="user_avatar" style={{
                                     backgroundImage: `url('./images/user.jpeg')`,
-                                     }}>
+                                    }}>
                                     </div>
                                 
                                 </div>
