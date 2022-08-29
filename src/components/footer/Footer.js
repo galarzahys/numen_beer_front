@@ -11,7 +11,7 @@ const Footer = () => {
         {/* SECTION REDES */}
         <div className="icon-container">
             <div>
-                <h2>Tell a frind</h2>
+                <h2>Tell a friend</h2>
             </div>
             <div>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faFacebook}/></Link>
