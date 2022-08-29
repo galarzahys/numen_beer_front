@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInstagram, faWhatsapp, faFacebook} from '@fortawesome/free-brands-svg-icons';
-import cerveza from '../assets/images/cervezaLogo.png'
 import './footer.css'
 import { Button } from '@mui/material';
  
