@@ -39,7 +39,7 @@ const HomePage = (props) => {
         <div className="welcome_text">
           <h1>Numen Beer</h1>
           <h3>Compartimos el código de una buena cerveza</h3>
-          <Button text="Conocé más" className="primary" />
+          <Button text="Conocé más" className="primary" url='e-Shop'/>
         </div>
         <div className="welcome_image"></div>
       </div>
