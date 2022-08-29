@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/button/Button';
 import QuickShopCard from '../components/cards/quickshop/quickShopCard';
 import '../styles/HomePage.css'
+import Carrusel from '../components/carrusel/Carrusel';
 
 
 
@@ -53,7 +54,8 @@ const HomePage = (props) => {
     ))
 }
 </div>
-            </div>
+        </div>
+        <Carrusel />
         </div>
     )
 }
