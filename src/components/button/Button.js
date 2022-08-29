@@ -3,10 +3,10 @@ import './button.css'
 import { Link } from 'react-router-dom';
 
 const Button = (props) => {
-  const {type, text, onClick, className} = props;
+  const {type, text, onClick, className, url} = props;
 
   return (
-    <Link to="/e-Shop">
+    <Link to={`/${url}`}>
       <button type={type} onClick={onClick} className={className}>{text}</button>
     </Link>
   )
