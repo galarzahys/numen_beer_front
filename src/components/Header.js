@@ -5,10 +5,7 @@ import { Badge } from '@mui/material';
 import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
 
-
-
 const Header = () => {
-
 
     return (
     <>
@@ -57,13 +54,12 @@ const Header = () => {
                     <Link className='linke' to={``}>
                                 <div className='user_data'>
                                 <p>{`Hola, usuario!`}</p>
-                                    <div className="user_avatar" style={{
+                                <div className="user_avatar" style={{
                                     backgroundImage: `url('./images/user.jpeg')`,
                                     }}>
-                                    </div>
-                                
                                 </div>
-                                </Link>
+                            </div>
+                        </Link>
                     </li>
                 </ul>
                 </div>
