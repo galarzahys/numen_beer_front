@@ -56,3 +56,9 @@
     margin-top: 5px;
     box-shadow: none !important;
   }
+
+  .productCardContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
