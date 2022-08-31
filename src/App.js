@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import ProductsForm from './components/backoffice/productForm';
 import Footer from './components/footer/Footer';
 import Header from './components/Header';
 import AboutUsPage from './pages/AboutUsPage';
+import SetProductsPage from './pages/backoffice/setProducts';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/E-ShopPage';
 import HomePage from './pages/HomePage';
@@ -18,6 +20,9 @@ function App() {
             <Route path='/products' element={ <ProductsPage/>} />
             <Route path='/e-Shop' element={ <ShopPage/>} />
             <Route path='/contact' element={ <ContactPage/>} />
+            <Route path='/backoffice' element={ <SetProductsPage />} />
+            <Route path='/backoffice/productsform' element={ <ProductsForm />} />
+            <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       <Footer />
