@@ -3,18 +3,32 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import * as Yup from 'yup';
 import { getReq, postReq, putReq } from '../../helpers/ReqToApi';
+import './productForm.css'
 
 const ProductsForm = (props) => {
 
     const [ productDetail, setProductDetail] = useState(null);
     const {id} = useParams();
     const [ image, setImage ] = useState(null)
+    const [pre_image, setPreImage] = useState(null)
     const navigate = useNavigate()
 
     const getData = async () => {
         const {data} = await getReq('/products/' + id);
         setProductDetail(data);
     };
+
+    const previewImage = () => {
+        let image_prev = ''
+     if(pre_image){
+        image_prev = <img className='image_prev' src={pre_image} /> 
+    } else if (productDetail) {
+        image_prev =  <img className='image_prev' src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + productDetail.image} /> 
+    } else {
+        image_prev = <img className='image_prev' src={'/images/producto-sin-imagen.png'}/> 
+    }
+    return image_prev;
+    }
 
     useEffect(() => {
         getData();
@@ -74,35 +88,39 @@ const ProductsForm = (props) => {
     
     return (
         <>
-        <section className="newsFormContainer">
-            <h1>{data.type === 'POST' ? 'Agregar nuevo producto' : 'Actualizar producto'}</h1>
+        <h1>{data.type === 'POST' ? 'Agregar nuevo producto' : 'Actualizar producto'}</h1>
+        <section className="productFormContainer">
+            
             <FormikProvider value={formik}>
-                <Form className="news-form">
-                    <Field placeholder='nombre' name="name" className="news-field"/> 
+                <Form className="prod-form">
+                    <Field placeholder='Nombre del producto' name="name" className="prod-field"/> 
                     <ErrorMessage name='name'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field placeholder='Presentación' name="packaging" className="news-field"/> 
+                    <Field placeholder='Presentación/Packaging' name="packaging" className="prod-field"/> 
                     <ErrorMessage name='packaging'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field placeholder='Categoria' name="category" className="news-field"/> 
+                    <Field placeholder='Categoria' name="category" className="prod-field"/> 
                     <ErrorMessage name='category'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field placeholder='Stock Disponible' name="stock" className="news-field"/> 
+                    <Field placeholder='Stock Disponible' name="stock" className="prod-field"/> 
                     <ErrorMessage name='stock'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field placeholder='Precio' name="price" className="news-field"/> 
+                    <Field placeholder='Precio' name="price" className="prod-field"/> 
                     <ErrorMessage name='price'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field as='textarea' name="description" className="news-field" placeholder='Descripción'/>
+                    <Field as='textarea' name="description" className="prod-field" placeholder='Descripción'/>
                     <ErrorMessage name='description'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
-                    <Field type="file" name="image" className="news-field" onChange={(e)=>setImage(e.target.files[0])} /> 
+                    <Field type="file" name="image" className="prod-field" onChange={(e)=>{setImage(e.target.files[0]); setPreImage(URL.createObjectURL(e.target.files[0]))}} /> 
                     <ErrorMessage name='image'>{msg => <span className="error">{msg}</span>}</ErrorMessage>
 
 
-                    <button type="submit" disabled={formik.isSubmitting} className="button-primary">Enviar</button>
+                    <button type="submit" disabled={formik.isSubmitting} className="secondary">Enviar</button>
                 </Form>
             </FormikProvider>
+            <div className='image_prev_cont'>
+                {previewImage()}
+            </div>
         </section>
         </>
     )
