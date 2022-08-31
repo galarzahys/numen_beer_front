@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import ProductsForm from './components/backoffice/productForm';
 import Footer from './components/footer/Footer';
-import Header from './components/Header';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 import AboutUsPage from './pages/AboutUsPage';
 import SetProductsPage from './pages/backoffice/setProducts';
 import ContactPage from './pages/ContactPage';
@@ -13,7 +13,7 @@ import ProductsPage from './pages/ProductsPage';
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
+      <ResponsiveAppBar />
       <section className='main_container'>
         <Routes>
             <Route path='/' element={ <HomePage/>} />
