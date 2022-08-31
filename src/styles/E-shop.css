@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@0;1&display=swap');
 
+  h1 {
+    font-size: 3rem;
+  }
+
 
   .ES_container h2 {
     font-size: 2rem;
