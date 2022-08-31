@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Carrusel from './components/Carrusel';
 import Footer from './components/Footer';
-import Header from './components/Header';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/E-ShopPage';
@@ -12,7 +12,7 @@ import ProductsPage from './pages/ProductsPage';
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
+      <ResponsiveAppBar />
         <Routes>
             <Route path='/' element={ <HomePage/>} />
             <Route path='/aboutUs' element={ <AboutUsPage/>} />
