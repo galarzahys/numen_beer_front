@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital@0;1&display=swap');
+
+  h1 {
+    font-size: 3rem;
+  }
+
+
+  .ES_container h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .ES_cardContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .secondary {
+    margin-top: 5px;
+    box-shadow: none !important;
+  }
+
+  .productCardContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }

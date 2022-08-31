@@ -3,6 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { dataSlick } from './carruselData';
 import './carrusel.css';
+import { Link } from 'react-router-dom';
+
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -72,15 +74,18 @@ const Carrusel = () => {
 
    <div className="container_slinder">
         <div className="title">
-          <h2>Imagenes de Instagram</h2>
+
+          <h2><Link to="#">@Numen Beer en Instagram</Link></h2>
+
         </div>
         <Slider {...settings}>
           {dataSlick.map(item =>(
-              <div className="card">
                 <figure className="cards">
-                  <img src={item.linkImg} alt={item.title} />
+                  <div className="cards_img">
+                    <img src={item.linkImg} alt={item.title} />
+                  </div>
+                  <h5>{item.frase}</h5>
                 </figure>
-              </div>
               )
             )
           }

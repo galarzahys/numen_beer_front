@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInstagram, faWhatsapp, faFacebook} from '@fortawesome/free-brands-svg-icons';
-import cerveza from '../assets/images/cervezaLogo.png'
 import './footer.css'
-import { Button } from '@mui/material';
+
  
 const Footer = () => {
   return (
@@ -12,7 +11,10 @@ const Footer = () => {
         {/* SECTION REDES */}
         <div className="icon-container">
             <div>
-                <h2>Tell a friend</h2>
+
+                <h2>Comparte con amigos</h2>
+
+
             </div>
             <div>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faFacebook}/></Link>
