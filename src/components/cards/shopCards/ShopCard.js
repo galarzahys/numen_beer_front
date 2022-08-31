@@ -13,6 +13,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import accounting from 'accounting';
 import { makeStyles } from "@mui/styles";
 import { Tooltip } from '@mui/material';
+import Button from '../../button/Button';
+import './ShopCard.css'
 
 
 const ExpandMore = styled((props) => {
@@ -34,23 +36,27 @@ const useStyles = makeStyles((theme)=>({
       alignItems: "center",
       height: "20vh",
       boxShadow: "1px 1px 3px #313843",
-      marginTop: "50px"
+      marginTop: "70px"
   },
   
   card : {
-      minHeight: "400px"
+      minHeight: "350px",
+      maxHeight: "350px"
+  },
+  img_cont : {
+    height: "150px"
   },
   img : {
-    height: "100%"
+    height: "150px"
   },
 
   headCard : {
-    minHeight: "100px",
-    maxHeight: "100px"
-}, 
-content : {
-  minHeight: "80px",
-  maxHeight: "80px"
+    minHeight: "50px",
+    maxHeight: "50px",
+    alignContent: "center",
+    alignItems: "center",
+    padding: "0px"
+
 }
 
 }))
@@ -83,17 +89,14 @@ export default function ShopCard(props) {
         title={name}
         subheader={short_data}
       />
-      <CardMedia
+      <div
         component="img"
-        className={classes.img}
-        image={`./images/products/${image}.png`}
+        className="img_cont"
         alt={name}
-      />
+      ><img src={`./images/products/${image}.png`} className="img_card" /></div>
       <CardActions disableSpacing>
       <Tooltip title="Add to basket" sx={{ p: 0 }}>
-        <IconButton aria-label="Add to Cart">
-          <AddShoppingCart fontSize='large' />
-        </IconButton>
+        <Button text="Sumar al carrito!" className="secondary"/>
         </Tooltip>
         
         <ExpandMore

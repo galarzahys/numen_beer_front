@@ -35,7 +35,7 @@ const beers = [
 
 const HomePage = (props) => {
   return (
-    <div className="main_container">
+<>
       <div className="welcome_container">
         <div className="welcome_text">
           <h1>Numen Beer</h1>
@@ -66,7 +66,7 @@ const HomePage = (props) => {
       <div>
         <Carrusel />
       </div>
-    </div>
+    </>
     
   );
 };

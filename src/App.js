@@ -14,6 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header/>
+      <section className='main_container'>
         <Routes>
             <Route path='/' element={ <HomePage/>} />
             <Route path='/aboutUs' element={ <AboutUsPage/>} />
@@ -25,6 +26,7 @@ function App() {
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
+        </section>
       <Footer />
     </BrowserRouter>
   );
