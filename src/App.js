@@ -8,6 +8,7 @@ import SetProductsPage from './pages/backoffice/setProducts';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/E-ShopPage';
 import HomePage from './pages/HomePage';
+// import Carrusel from "./components/carrusel/Carrusel";
 import ProductsPage from './pages/ProductsPage';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <section className='main_container'>
         <Routes>
             <Route path='/' element={ <HomePage/>} />
-            <Route path='/Home' element={ <HomePage/>} />
+            <Route path='/Home' element={ <HomePage/>}/>
             <Route path='/Nosotros' element={ <AboutUsPage/>} />
             <Route path='/Productos' element={ <ProductsPage/>} />
             <Route path='/Tienda' element={ <ShopPage/>} />
@@ -27,7 +28,8 @@ function App() {
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
-        </section>
+      </section>
+      {/* <Carrusel/> */}
       <Footer />
     </BrowserRouter>
   );
