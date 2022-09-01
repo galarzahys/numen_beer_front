@@ -17,10 +17,11 @@ function App() {
       <section className='main_container'>
         <Routes>
             <Route path='/' element={ <HomePage/>} />
-            <Route path='/aboutUs' element={ <AboutUsPage/>} />
-            <Route path='/products' element={ <ProductsPage/>} />
-            <Route path='/e-Shop' element={ <ShopPage/>} />
-            <Route path='/contact' element={ <ContactPage/>} />
+            <Route path='/Home' element={ <HomePage/>} />
+            <Route path='/Nosotros' element={ <AboutUsPage/>} />
+            <Route path='/Productos' element={ <ProductsPage/>} />
+            <Route path='/Tienda' element={ <ShopPage/>} />
+            <Route path='/Contacto' element={ <ContactPage/>} />
             <Route path='/backoffice' element={ <SetProductsPage />} />
             <Route path='/backoffice/productsform' element={ <ProductsForm />} />
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
