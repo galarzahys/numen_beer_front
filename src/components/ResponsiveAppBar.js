@@ -11,11 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import SearchIcon from '@mui/icons-material/Search';
+import Image from 'mui-image'
 import {Link} from 'react-router-dom';
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Perfil', 'Cuenta', 'Cerrar sesión'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,10 +38,19 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar color="success" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Box
+            component="img"
+            sx={{
+              height: "15%",
+              maxHeight: { xs: 50, md: 80 },
+              // maxWidth: { xs: 250, md: 150 },
+            }}
+            alt="Logo"
+            src="images/favicon.jpg"
+          />
           <Typography
             variant="h6"
             noWrap
@@ -50,13 +60,13 @@ const ResponsiveAppBar = () => {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 70,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            Numen Beer
+          
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -67,9 +77,10 @@ const ResponsiveAppBar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            > 
+            <MenuIcon /> 
+            </IconButton> 
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -97,7 +108,6 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,14 +124,14 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            Numen Beer
+          
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 1, color: 'white', display: 'block' }}
               >
               <Link style={{textDecoration: "none", color:"white"}} to={`/${page}`}>{page}</Link>
 
@@ -129,10 +139,16 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
+          <Box>
+            <IconButton size="large" aria-label="search" color="inherit">
+              <SearchIcon />
+            </IconButton>
+          </Box> 
+          
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Loging">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Logo User" src="/public/images/user.jpg" />
+                <Avatar alt="Loging" src="/public/images/user.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -141,12 +157,12 @@ const ResponsiveAppBar = () => {
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -165,76 +181,5 @@ const ResponsiveAppBar = () => {
 };
 export default ResponsiveAppBar;
 
-// import { Link } from 'react-router-dom';
-// import './Header.css';
-// import IconButton from '@mui/material/IconButton';
-// import { Badge } from '@mui/material';
-// import ShoppingCart from '@mui/icons-material/ShoppingCart'
 
-
-// const Header = () => {
-
-//     return (
-//     <>
-//         <nav className="Nav">
-//             <div className="Nav_container">
-//                 <Link to="/" className="Nav_brand">
-//                 <img src="./images/Logo NB.png" className="Nav_logo" alt="logo_numen_beer" />
-//                 </Link>
-//                 <div className="Nav_center">
-//                     <ul className="Nav_item-wrapper">
-//                     <li className="Nav_item">
-//                         <Link className="Nav_link" to="/Home">Home</Link>
-//                         </li>
-//                         <li className="Nav_item">
-//                         <Link className="Nav_link" to="/aboutUs">Nosotros</Link>
-//                         </li>
-//                         <li className="Nav_item">
-//                         <Link className="Nav_link" to="/products">Productos</Link>
-//                         </li>
-//                         <li className="Nav_item">
-//                         <Link className="Nav__link" to="/e-Shop">Tienda</Link>
-//                         </li>
-//                         <li className="Nav_item">
-//                         <Link className="Nav_link" to="/contact">Contacto</Link>
-//                         </li>
-//                     </ul>
-//                 </div>
-//                 <div className="Nav_right">
-//                 <ul className="Nav_item_seach">
-//                     <li className="Nav_item_2">
-//                     <button> Busqueda </button>
-//                     </li>
-//                     <li className="Nav_item_2">
-//                     <button> Login </button>
-//                     </li>
-//                     <li className="Nav_item_2">
-//                     <Link to={"/checkout"}>
-//                         <IconButton>
-//                             <Badge badgeContent={0} color="success">
-//                             <ShoppingCart fontSize="large"/>
-//                             </Badge>
-//                         </IconButton>
-//                     </Link>
-//                     </li>
-//                     <li className="Nav_item_2">
-//                     <Link className='linke' to={``}>
-//                                 <div className='user_data'>
-//                                 <p>{`Hola, usuario!`}</p>
-//                                 <div className="user_avatar" style={{
-//                                     backgroundImage: `url('./images/user.jpeg')`,
-//                                     }}>
-//                                 </div>
-//                             </div>
-//                         </Link>
-//                     </li>
-//                 </ul>
-//                 </div>
-//             </div>
-//         </nav>
-//     </>
-//     )
-// }
-
-// export default Header
 
