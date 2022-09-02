@@ -3,29 +3,32 @@
 
 .welcome_container {
     width: 100%;
-    height: 90vh;
+    height: 85vh;
+    min-height: 350px;
     display: flex;
     background: linear-gradient(to right, rgba(41, 35, 35, 0), rgb(80, 155, 92));
 }
 
 .welcome_text {
     width: 50%;
+    min-width: fit-content;
+    max-width: fit-content;
 }
 
 .welcome_text h1{
   font-size: 5rem;
-  margin: 30% 0 0 10%;
+  margin: 20% 0 0 5%;
 }
 
 .welcome_text h3{
-    font-size: 2rem;
-    margin: 0 0 0 5%;
+    font-size: 2.1rem;
+    margin: 0 0 0 10%;
     color: #A47B54;
   }
 
 .welcome_image {
     width: 50%;
-    height: 90vh;
+    height: 85vh;
     background: linear-gradient(to left, rgba(41, 35, 35, 0), rgb(169, 204, 175)),
       url("./../../public/images/welcome.jpg") 40%;
     background-size: cover;
@@ -34,7 +37,7 @@
   .primary {
     margin-top: 50px;
     width: 35% !important;
-    margin-left: 10%;
+    margin-left: 35%;
   }
   .QS_container h2 {
     font-size: 2rem;

@@ -12,7 +12,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
-import Image from 'mui-image'
 import {Link} from 'react-router-dom';
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
@@ -46,7 +45,6 @@ const ResponsiveAppBar = () => {
             sx={{
               height: "15%",
               maxHeight: { xs: 50, md: 80 },
-              // maxWidth: { xs: 250, md: 150 },
             }}
             alt="Logo"
             src="images/favicon.jpg"
@@ -57,6 +55,7 @@ const ResponsiveAppBar = () => {
             component="a"
             href="/"
             sx={{
+              flexGrow: 1,
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
@@ -85,6 +84,7 @@ const ResponsiveAppBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
+                
                 vertical: 'bottom',
                 horizontal: 'left',
               }}
@@ -107,7 +107,7 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box >
           <Typography
             variant="h5"
             noWrap
@@ -131,15 +131,15 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 1, color: 'white', display: 'block' }}
+                sx={{ my: 1, mx:1, color: 'white', display: 'block' }}
               >
-              <Link style={{textDecoration: "none", color:"white"}} to={`/${page}`}>{page}</Link>
+              <Link style={{textDecoration: "none", color:"white", textAlign:"center"}} to={`/${page}`}>{page}</Link>
 
               </Button>
             ))}
           </Box>
 
-          <Box>
+          <Box >
             <IconButton size="large" aria-label="search" color="inherit">
               <SearchIcon />
             </IconButton>
@@ -152,7 +152,7 @@ const ResponsiveAppBar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '60px'}}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
