@@ -25,6 +25,7 @@
     font-size: 1.5rem;
     margin-top: 1%;
     color: #b36c29;
+    text-shadow: 1px 1px #333;
     width: auto;
     text-align: center;
   }
@@ -81,6 +82,7 @@
 
     .welcome_text h3 {
       font-size: 1.8rem;
+      text-shadow: 2px 2px #333;
     }
 
     .primary{
@@ -97,7 +99,7 @@
 
     .welcome_text {
       position: absolute;
-      }
+    }
 
     .welcome_text h1 {
       font-size: 5.5rem;
