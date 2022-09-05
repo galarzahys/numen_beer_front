@@ -8,7 +8,7 @@
 }
 
 .welcome_text {
-  background: linear-gradient(to bottom, rgba(169, 197, 162, 0.5), rgba(5, 61, 5, 0.5));
+  background: linear-gradient(to bottom, rgba(244, 247, 244, 0.6), rgba(1, 10, 1, 0.3));
   height: 100vh;
   width: 100%;
   position: absolute;
