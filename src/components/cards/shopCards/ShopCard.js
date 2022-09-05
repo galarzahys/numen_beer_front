@@ -12,9 +12,10 @@ import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import accounting from 'accounting';
 import { makeStyles } from "@mui/styles";
-import { Tooltip } from '@mui/material';
-import Button from '../../button/Button';
+import { Button, Tooltip } from '@mui/material';
 import './ShopCard.css'
+import { useStateValue } from '../../../context/StateProvider';
+import { actionTypes } from '../../../context/reducer';
 
 
 const ExpandMore = styled((props) => {
@@ -65,15 +66,34 @@ export default function ShopCard(props) {
 
   const classes = useStyles()
 
+  const [ {basket}, dispatch ] = useStateValue(); 
+
 
   const [expanded, setExpanded] = React.useState(false);
 
-  const { id, name, price, short_data, quantity, image, description } = props;
+  const { id, name, packaging, category, stock, price, image, description } = props;
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const AddToBasket = () => {
+    dispatch({
+      type: actionTypes.ADD_TO_BASKET,
+      item: {
+        id,
+        name,
+        packaging,
+        category,
+        stock,
+        price,
+        description,
+        image,
+        quantity: 1
+      }
+    })
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }} className={classes.card}>
@@ -87,17 +107,16 @@ export default function ShopCard(props) {
           >{accounting.formatMoney(price, "$")}</Typography>
         }
         title={name}
-        subheader={short_data}
+        subheader={packaging}
       />
       <div
         component="img"
         className="img_cont"
         alt={name}
-      ><img src={`./images/products/${image}.png`} className="img_card" /></div>
+      ><img src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + image} className="img_card" /></div>
       <CardActions disableSpacing>
-      <Tooltip title="Add to basket" sx={{ p: 0 }}>
-        <Button text="Sumar al carrito!" className="secondary"/>
-        </Tooltip>
+      <Button color="secondary" onClick={AddToBasket}> Sumar al carrito! </Button>
+       
         
         <ExpandMore
           expand={expanded}

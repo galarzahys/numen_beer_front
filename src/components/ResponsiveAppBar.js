@@ -13,8 +13,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { Badge } from '@mui/material';
+import { actionTypes } from '../context/reducer';
+import { useStateValue } from '../context/StateProvider';
+import './../styles/HomePage.css'
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
 const settings = ['Perfil', 'Cuenta', 'Cerrar sesión'];
@@ -22,6 +25,26 @@ const settings = ['Perfil', 'Cuenta', 'Cerrar sesión'];
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const navigate = useNavigate()
+
+  const [{ basket, user }, dispatch] = useStateValue();
+
+  const handleLogout = () => {
+
+
+        console.log("Sign-out successful.");
+        dispatch({
+          type: actionTypes.EMPTY_BASKET,
+          basket: [],
+        });
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: null,
+        });
+
+        localStorage.clear();
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,6 +62,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
+    <div className='nav_container'>
     <AppBar color="success" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -150,7 +174,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Loging">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Loging" src="/public/images/user.jpg" />
+                <Avatar src="./images/user.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -169,21 +193,27 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={handleCloseUserMenu}>
+            {user ? <Button color="inherit" onClick={handleLogout}> Logout </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+            <Button color="inherit" onClick={(e)=> navigate("/register")}> Registrarse </Button>
                 </MenuItem>
-              ))}
             </Menu>
             <IconButton aria-label="show cart items" color="inherit">
-              <Badge badgeContent={2} color="warning">
+              <Link to={"/micarrito"}>
+              <Badge badgeContent={basket?.length} color="warning">
                 <AddShoppingCartIcon/>
-              </Badge>  
+              </Badge>
+              </Link>  
             </IconButton>
+
+
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
+    </div>
   );
 };
 export default ResponsiveAppBar;
