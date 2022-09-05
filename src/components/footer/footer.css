@@ -1,6 +1,11 @@
 
 
  /* --Icon Containers-- */
+
+ .main_footer {
+   max-width: 100%;
+ }
+
 .icon-container {
    display: flex;
    flex-direction: column;

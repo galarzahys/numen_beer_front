@@ -1,7 +1,7 @@
 
 
 .SC_container {
-    height: 500px;
+    height: fit-content;
     width: 300px;
     margin: 10px;
     margin-bottom: 30px;
@@ -52,11 +52,12 @@
 
 .img_cont {
     width: 100%;
-    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
     text-align: center;
 }
 
 .img_card {
-    height: 180px;
+    max-height: 150px;
 }
 

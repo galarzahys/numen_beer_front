@@ -15,7 +15,7 @@ const Footer = () => {
     const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
   return (
     <>  
-    <footer>
+    <footer className='main_footer'>
         {/* SECTION REDES */}
         <div className="icon-container">
             <div>

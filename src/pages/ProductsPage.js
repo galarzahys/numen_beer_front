@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
-import { ProductsContext } from '../contexts/ProductsContext';
+import React, { useState } from 'react';
+import { getReq } from '../helpers/ReqToApi';
+
 
 
 
 const ProductsPage = (props) => {
 
-    const { products, loading } = useContext(ProductsContext);
+    const [loading, setLoading] = useState(false);
+    const [products, setProducts] = useState([]);
+
+    const loadProducts = async () => {
+        setLoading(true);
+        const response = await getReq(`/products`);
+        setProducts(response.data);
+        setLoading(false);
+      };
 
     return (
         <div>
