@@ -12,7 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import {Link} from 'react-router-dom';
+import { Badge } from '@mui/material';
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
 const settings = ['Perfil', 'Cuenta', 'Cerrar sesión'];
@@ -173,6 +175,11 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
+            <IconButton aria-label="show cart items" color="inherit">
+              <Badge badgeContent={2} color="warning">
+                <AddShoppingCartIcon/>
+              </Badge>  
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

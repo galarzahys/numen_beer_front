@@ -37,12 +37,13 @@ const HomePage = (props) => {
   return (
 <>
       <div className="welcome_container">
-        <div className="welcome_text">
-          <h1>Numen Beer</h1>
-          <h3>Compartimos el código de una buena cerveza</h3>
-          <Button text="Conocé más" className="primary" url='e-Shop'/>
+        <div className="welcome_image">
+          <div className="welcome_text">
+            <h1>Numen Beer</h1>
+            <h3>Compartimos el código de una buena cerveza</h3>
+            <Button text="Conocé más" className="primary" url='e-Shop'/>
+          </div>
         </div>
-        <div className="welcome_image"></div>
       </div>
       <div className="QS_container">
         <h2>Ofertas del día</h2>
