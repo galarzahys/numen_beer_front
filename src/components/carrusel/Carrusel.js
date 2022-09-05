@@ -1,34 +1,32 @@
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { dataSlick } from './carruselData';
 import './carrusel.css';
 import { Link } from 'react-router-dom';
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "#00382A" }}
-        onClick={onClick}
-      />
-    );
-}
-  
-function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "#00382A"}}
-        onClick={onClick}
-      />
-    );
-}
+// botones personalizados 
 
+const PreviousBtn = (props) => {
+  const { className, onClick } = props;
+  return(
+    <div className={className} onClick={onClick}>
+      <ArrowBackIos className="iconSlick"/>
+    </div>
+  );
+};
 
+const NextBtn = (props) => {
+  const {className, onClick} = props;
+  return(
+    <div className={className} onClick={onClick}>
+      <ArrowForwardIos className="iconSlick"/>
+    </div>
+  );
+};
 
 const Carrusel = () => {
 
@@ -41,8 +39,8 @@ const Carrusel = () => {
         speed: 1000,
         autoplaySpeed: 2000,
         cssEase: "linear",
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        nextArrow: <NextBtn />,
+        prevArrow: <PreviousBtn />,
         responsive: [
           {
             breakpoint: 1024,
@@ -74,9 +72,7 @@ const Carrusel = () => {
 
    <div className="container_slinder">
         <div className="title">
-
           <h2><Link to="#">@Numen Beer en Instagram</Link></h2>
-
         </div>
         <Slider {...settings}>
           {dataSlick.map(item =>(

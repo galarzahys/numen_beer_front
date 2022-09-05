@@ -2,9 +2,17 @@ import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInstagram, faWhatsapp, faFacebook} from '@fortawesome/free-brands-svg-icons';
 import './footer.css'
+import HomePage from '../../pages/HomePage';
+import AboutUsPage from '../../pages/AboutUsPage';
+import ProductsPage from '../../pages/ProductsPage';
+import ShopPage from '../../pages/E-ShopPage';
+import ContactPage from '../../pages/ContactPage';
+
 
  
 const Footer = () => {
+
+    const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
   return (
     <>  
     <footer>
@@ -25,21 +33,21 @@ const Footer = () => {
         {/* SECTION LINK */}
         <div className="link-container">
             <div className='img_container' >
-                <Link to="/"><img src="./images/Logo NB.png" alt="cerveza" style={img}/></Link>
+                <Link to="/Home" element={ <HomePage/>}><img src="./images/Logo NB.png" alt="cerveza" style={img}/></Link>
             </div>
             <div className="ul-container">
                 <ul className='ul-footer'>
                     <li className="footer_item">
-                    <Link className="footer__link" to="/aboutUs">Nosotros</Link>
+                    <Link className="footer__link" to='Nosotros' element={ <AboutUsPage/>}>Nosotros</Link>
                     </li>
                     <li className="footer_item">
-                    <Link className="footer__link" to="/products">Productos</Link>
+                    <Link className="footer__link" to='Productos'  element={ <ProductsPage/>}>Productos</Link>
                     </li>
                     <li className="footer_item">
-                    <Link className="footer__link" to="/e-Shop">Tienda</Link>
+                    <Link className="footer__link" to='Tienda'  element={ <ShopPage/>}>Tienda</Link>
                     </li>
                     <li className="footer_item">
-                    <Link className="footer__link" to="/contact">Contacto</Link>
+                    <Link className="footer__link" to='Contacto'  element={ <ContactPage/>}>Contacto</Link>
                     </li>
                 </ul>
             </div>

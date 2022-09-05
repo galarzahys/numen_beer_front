@@ -64,11 +64,8 @@ const HomePage = (props) => {
       <div class="productCardContainer">
         <ProductCard />
       </div>
-      <div>
-        <Carrusel />
-      </div>
-    </>
-    
+      <Carrusel />
+    </> 
   );
 };
 
