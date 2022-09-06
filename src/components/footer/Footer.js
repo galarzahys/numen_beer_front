@@ -15,14 +15,11 @@ const Footer = () => {
     const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
   return (
     <>  
-    <footer className='main_footer'>
+    <footer className='main_container'>
         {/* SECTION REDES */}
         <div className="icon-container">
             <div>
-
                 <h2>Comparte con amigos</h2>
-
-
             </div>
             <div>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faFacebook}/></Link>
@@ -35,7 +32,6 @@ const Footer = () => {
             <div className='img_container' >
                 <Link to="/Home" element={ <HomePage/>}><img src="./images/Logo NB.png" alt="cerveza" style={img}/></Link>
             </div>
-            <div className="ul-container">
                 <ul className='ul-footer'>
                     <li className="footer_item">
                     <Link className="footer__link" to='Nosotros' element={ <AboutUsPage/>}>Nosotros</Link>
@@ -51,7 +47,6 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
-        </div>
     </footer>
     </>
   )

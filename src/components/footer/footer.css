@@ -1,9 +1,17 @@
-
+html {
+   min-width: 100%;
+   max-width: 100%;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
 
  /* --Icon Containers-- */
 
- .main_footer {
+ .main_container {
    max-width: 100%;
+   min-width: 100%;
+   margin-bottom: 0;
  }
 
 .icon-container {
@@ -12,7 +20,7 @@
    justify-content: center;
    align-items: center;
    background-color: #D8EC8A;
-   height: 20vh;
+   height: 25vh;
    width: 100%; 
 }
 
@@ -22,6 +30,7 @@
    margin: 0px 0px 20px 20px;
    padding: 7px;
    border-radius: 50px;
+   color:#00382A
 }
 
 .icon:hover {
@@ -47,17 +56,13 @@ color: #00382A;
 
  .link-container {
     display: grid;
-    grid-template-columns: 30% 70%;
+    min-width: 100%;
+    max-width: 100%;
+    grid-template-columns: 40% 60%;
     height: auto;
-    width: auto;
     background-color: #00382A;
  }
 
- .ul-container {
-    display: grid;
-    align-items: center;
-    width: 100%;
- }
 
  .ul-footer {
     display: grid;
@@ -108,8 +113,7 @@ color: #00382A;
     .ul-footer {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 40rem;
+        justify-content: space-around;
         font-size: 1.1rem;
     }
 }

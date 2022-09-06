@@ -80,8 +80,7 @@ const ProductsForm = (props) => {
         ? postReq('/products', data_im)
         : putReq('/products/' + productDetail.id, data_im)
         setSubmitting(false)
-        navigate('/backoffice/setproduct')
-        window.location.reload()
+        navigate('/backoffice')
     }
     
     const formik = useFormik({enableReinitialize:true, initialValues: data, validationSchema: ProductValidationSchema, onSubmit: handleSubmit});
