@@ -1,5 +1,6 @@
 export const initialState = {
     basket: [],
+    unifiedBasket: [],
     user: null,
     checkout_data: [],
     payment_data: [],
@@ -9,6 +10,8 @@ export const initialState = {
 export const actionTypes = {
     ADD_TO_BASKET: "ADD_TO_BASKET",
     DEL_FROM_BASKET: "DEL_FROM_BASKET",
+    DEL_PROD_FROM_BASKET: "DEL_PROD_FROM_BASKET",
+    ADD_ONE_TO_BASKET: "ADD_ONE_TO_BASKET",
     EMPTY_BASKET: "EMPTY_BASKET",
     SET_USER: "SET_USER",
     SET_CO_DATA: "SET_CO_DATA",
@@ -22,17 +25,26 @@ export const getBasketTotal = (basket) => {
     return total
 }
 
+
 const reducer = (state, action) => {
-    console.log(action);
+
     switch(action.type){
     case "ADD_TO_BASKET":
-        return {
+            return {
             ...state,
             basket: [...state.basket, action.item ]
         };
+
+        case "ADD_ONE_TO_BASKET":
+            const plusIndexItem = state.basket.find((basketItem => basketItem.id === action.id))
+    
+            return {
+                ...state,
+                basket: [...state.basket, plusIndexItem ]
+            };
+
     case "DEL_FROM_BASKET":
         const index = state.basket.findIndex((basketItem => basketItem.id === action.id))
-        console.log(index)
         let newBasket = [...state.basket];
 
         if (index >= 0){
@@ -41,6 +53,14 @@ const reducer = (state, action) => {
         return {
             ...state,
             basket: newBasket,
+        };
+
+    case "DEL_PROD_FROM_BASKET":
+        let cleanBasket = state.basket.filter((basketItem => basketItem.id !== action.id))
+
+        return {
+        ...state,
+            basket: cleanBasket,
         };
     case "EMPTY_BASKET":
         return {

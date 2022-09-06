@@ -16,6 +16,7 @@ import { Button, Tooltip } from '@mui/material';
 import './ShopCard.css'
 import { useStateValue } from '../../../context/StateProvider';
 import { actionTypes } from '../../../context/reducer';
+import { Box } from '@mui/system';
 
 
 const ExpandMore = styled((props) => {
@@ -114,7 +115,9 @@ export default function ShopCard(props) {
         className="img_cont"
         alt={name}
       ><img src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + image} className="img_card" /></div>
+      <Box>        <Typography>Stock: {stock} un.</Typography></Box>
       <CardActions disableSpacing>
+
       <Button color="secondary" onClick={AddToBasket}> Sumar al carrito! </Button>
        
         
