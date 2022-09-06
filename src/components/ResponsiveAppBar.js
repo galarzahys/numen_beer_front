@@ -64,7 +64,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <div className='nav_container'>
-    <AppBar style={{ backgroundColor: "#00382A"}} position="static">
+    <AppBar style={{ backgroundColor: "#00382A"}} position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -193,6 +193,7 @@ const ResponsiveAppBar = () => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
+              style={{textDecoration: "none", color:"#00382A", textAlign: "right"}}
             >
                 <MenuItem onClick={handleCloseUserMenu}>
             {user ? <Button color="inherit" onClick={handleLogout}> Cerrar Sesión </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
@@ -205,7 +206,7 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
             </Menu>
             <IconButton aria-label="show cart items" color="inherit">
-              <Link to={"/micarrito"}>
+              <Link to={"/micarrito"} style={{textDecoration: "none", color:"#D8EC8A"}} >
               <Badge badgeContent={basket?.length} color="warning">
                 <AddShoppingCartIcon/>
               </Badge>

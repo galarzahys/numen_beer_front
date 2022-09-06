@@ -12,15 +12,26 @@ const useStyles = makeStyles((theme)=>({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "20vh",
+        height: "25vh",
         boxShadow: "1px 1px 3px #313843",
         margin: "5px",
         padding: "0"
     },
     
     button : {
-        marginTop: "2rem"
+        backgroundColor: "#D8EC8A",
+        color: "#00382A",
+        "&:hover" : {
+        backgroundColor: "#00382A",
+        color: "#D8EC8A"
+        }
+    },
+    amount : {
+        fontSize: "2rem",
+        margin: "0.5rem",
+        color: "#00382A"
     }
+
 
 }))
 
@@ -34,9 +45,9 @@ const Total = () => {
     return (
         <div className={classes.root}>
             <h5>Total items : {basket?.length}</h5>
-        <h3>{accounting.formatMoney(getBasketTotal(basket), "£" )}</h3>
+        <h3 className={classes.amount}>{accounting.formatMoney(getBasketTotal(basket), "$" )}</h3>
         <Link to={"/checkout"} style={{ textDecoration: "none"}}>
-        <Button className={classes.button} variant="contained" color="primary">Finalizar Compra</Button>
+        <Button className={classes.button} variant="contained">Finalizar Compra</Button>
         </Link>
         </div>
     )
