@@ -20,7 +20,6 @@ import { useStateValue } from '../context/StateProvider';
 import './../styles/HomePage.css'
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
-const settings = ['Perfil', 'Cuenta', 'Cerrar sesión'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -194,7 +193,10 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
                 <MenuItem onClick={handleCloseUserMenu}>
-            {user ? <Button color="inherit" onClick={handleLogout}> Logout </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
+            {user ? <Button color="inherit" onClick={handleLogout}> Cerrar Sesión </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+            {user && user.roleId === 1 ? <Button color="inherit" onClick={(e)=> navigate("/backoffice")}> Panel de Control </Button> : ""}
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
             <Button color="inherit" onClick={(e)=> navigate("/register")}> Registrarse </Button>

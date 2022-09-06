@@ -4,7 +4,7 @@ import ContactForm from '../components/ContactForm';
 
 const ContactPage = (props) => {
     return (
-        <div style={{ margin: "20px"}}>
+        <div className='main_container'>
         <ContactForm/>
         </div>
     )

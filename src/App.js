@@ -3,7 +3,7 @@ import './App.css';
 import ProductsForm from './components/backoffice/productForm';
 import Footer from './components/footer/Footer';
 import LoginForm from './components/forms/LoginForm';
-import RegistrationPage from './components/forms/RegistrationForm';
+import RegistrationForm from './components/forms/RegistrationForm';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
 import AboutUsPage from './pages/AboutUsPage';
 import SetProductsPage from './pages/backoffice/setProducts';
@@ -30,7 +30,7 @@ function App() {
             <Route path='/backoffice' element={ <SetProductsPage />} />
             <Route path='/backoffice/productsform' element={ <ProductsForm />} />
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
-            <Route path='/register' element={ <RegistrationPage />} />
+            <Route path='/register' element={ <RegistrationForm />} />
             <Route path='/login' element={ <LoginForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

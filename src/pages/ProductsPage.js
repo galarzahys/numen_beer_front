@@ -17,7 +17,7 @@ const ProductsPage = (props) => {
       };
 
     return (
-        <div>
+        <div className='main_container'>
             <h1>Productos</h1>
            {loading ? (
           <p>Cargando...</p>
