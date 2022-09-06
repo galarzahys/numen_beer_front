@@ -21,6 +21,8 @@ import './../styles/HomePage.css'
 
 const pages = ['Home', 'Nosotros', 'Productos', 'Tienda', 'Contacto'];
 
+
+
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -62,14 +64,14 @@ const ResponsiveAppBar = () => {
 
   return (
     <div className='nav_container'>
-    <AppBar color="success" position="static">
+    <AppBar style={{ backgroundColor: "#00382A"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
             component="img"
             sx={{
-              height: "15%",
-              maxHeight: { xs: 50, md: 80 },
+              height: "12%",
+              maxHeight: { xs: 35, md: 60 },
             }}
             alt="Logo"
             src="images/favicon.jpg"
@@ -86,7 +88,7 @@ const ResponsiveAppBar = () => {
               fontFamily: 'monospace',
               fontWeight: 70,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#00382A',
               textDecoration: 'none',
             }}
           >
@@ -127,7 +129,7 @@ const ResponsiveAppBar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link style={{textDecoration: "none", color:"white"}} to={`/${page}`}>{page}</Link>
+                    <Link style={{textDecoration: "none", color:"#00382A"}} to={`/${page}`}>{page}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -156,9 +158,9 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 1, mx:1, color: 'white', display: 'block' }}
+                sx={{ my: 1, mx:1, color: '#D8EC8A', display: 'block' }}
               >
-              <Link style={{textDecoration: "none", color:"white", textAlign:"center"}} to={`/${page}`}>{page}</Link>
+              <Link style={{textDecoration: "none", color:"#D8EC8A", textAlign:"center"}} to={`/${page}`}>{page}</Link>
 
               </Button>
             ))}
