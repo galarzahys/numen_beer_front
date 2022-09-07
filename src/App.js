@@ -11,7 +11,6 @@ import CheckoutPage from './pages/CheckoutPage';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/E-ShopPage';
 import HomePage from './pages/HomePage';
-// import Carrusel from "./components/carrusel/Carrusel";
 import ProductsPage from './pages/ProductsPage';
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </section>
-      {/* <Carrusel/> */}
       <Footer />
     </BrowserRouter>
   );

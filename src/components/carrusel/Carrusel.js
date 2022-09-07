@@ -72,7 +72,7 @@ const Carrusel = () => {
 
    <div className="container_slinder">
         <div className="title">
-          <h2><Link to="#">@Numen Beer en Instagram</Link></h2>
+          <h2>@Numen Beer en Instagram</h2>
         </div>
         <Slider {...settings}>
           {dataSlick.map(item =>(
