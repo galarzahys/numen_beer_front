@@ -16,7 +16,7 @@ import { actionTypes } from "../context/reducer";
 import { Box } from "@mui/system";
 import { Badge, Button, IconButton, Tooltip } from "@mui/material";
 import {TiDelete} from 'react-icons/ti'
-import { RiDeleteRow } from 'react-icons/ri'
+import { MdDeleteSweep } from 'react-icons/md'
 import {FiPlusSquare, FiMinusSquare} from 'react-icons/fi'
 import Swal from "sweetalert2";
 
@@ -34,6 +34,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const CheckoutPage = () => {
 
   const [{ basket,}, dispatch] = useStateValue();
+  const [ activeButton, setActiveButton ] = React.useState(false)
 
   let unifiedBasket = basket.reduce((acum, actualValue) => {
     const existingItem = acum.find(
@@ -66,6 +67,8 @@ const CheckoutPage = () => {
     })
   }
 
+  console.log(unifiedBasket)
+
   const removeRow = (id) => {
     dispatch({
       type: actionTypes.DEL_PROD_FROM_BASKET,
@@ -97,6 +100,21 @@ const deleteAlert = ()=>{
   })
 }})};
 
+const overStock = (id)=>{
+  Swal.fire({
+    title: 'Su pedido supera el stock disponible',
+    confirmButtonText: 'Entendido',
+    backgroundColor: "#D8EC8A",
+    color: "#00382A",
+    confirmButtonColor: "#00382A",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      removeItem(id)
+      setActiveButton(true)
+      setTimeout(() =>{
+        setActiveButton(false)
+      }, 5000)
+}})};
 
 
   function FormRow() {
@@ -129,12 +147,19 @@ const deleteAlert = ()=>{
                   <TableCell>
                   <Tooltip title="Eliminar fila" placement="left">
                     <IconButton onClick={()=>removeRow(row.id)}>
-                      <RiDeleteRow style={{ color: "D8EC8A"}} />
+                      <MdDeleteSweep style={{ color: "D8EC8A"}} />
                       </IconButton>
                       </Tooltip>
                       </TableCell>
                   <TableCell component="th" scope="row">{row.name}</TableCell>
-                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=> addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
+                  <TableCell align="center">
+                    <IconButton onClick={()=> removeItem(row.id)} >
+                      <FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> 
+                    </IconButton>{row.quantity}{row.quantity > row.stock ? overStock(row.id) : ""}
+                    <IconButton disabled={activeButton} onClick={()=> addItem(row.id) }>
+                      <FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/>
+                    </IconButton>
+                  </TableCell>
                   <TableCell align="right">{accounting.formatMoney(row.price, "$") }</TableCell>
                   <TableCell align="right">{accounting.formatMoney(getSubtotal(row.quantity, row.price), "$" )}</TableCell>
                 </TableRow>

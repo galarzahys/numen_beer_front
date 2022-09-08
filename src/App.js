@@ -11,6 +11,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import ContactPage from './pages/ContactPage';
 import ShopPage from './pages/E-ShopPage';
 import HomePage from './pages/HomePage';
+import Checkout from './components/checkout/CheckOut'
 // import Carrusel from "./components/carrusel/Carrusel";
 import ProductsPage from './pages/ProductsPage';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path='/Productos' element={ <ProductsPage/>} />
             <Route path='/Tienda' element={ <ShopPage/>} />
             <Route path='/micarrito' element={ <CheckoutPage/>} />
+            <Route path='/checkout' element={<Checkout />} />
             <Route path='/Contacto' element={ <ContactPage/>} />
             <Route path='/backoffice' element={ <SetProductsPage />} />
             <Route path='/backoffice/productsform' element={ <ProductsForm />} />
