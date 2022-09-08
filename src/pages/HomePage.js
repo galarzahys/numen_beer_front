@@ -64,6 +64,15 @@ const HomePage = (props) => {
       <div class="productCardContainer">
         <ProductCard />
       </div>
+      <div className="center_container">
+        <div className="center_image">
+          <div className="center_text">
+            <h2>Te invitamos a conocer nuestra fábrica</h2>
+            <h3>logo</h3>
+            <Button text="Me interesa" className="primary" url='e-Shop'/>
+          </div>
+        </div>
+      </div>
       <Carrusel />
     </> 
   );
