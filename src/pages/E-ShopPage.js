@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ProductCardData } from "../components/cards/productsCard/ProductCardData";
 import ShopCard from '../components/cards/shopCards/ShopCard';
 import "../styles/E-shop.css";
 import { Box } from '@mui/system';
