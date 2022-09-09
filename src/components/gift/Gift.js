@@ -19,7 +19,7 @@ const Gift = () => {
             Para comprar para un grupo de personas, póngase en contacto <br /> y podemos discutir 
             paquetes a medida <br />y mensajes personalizados.
           </p>
-          <Button text="Comprar Ahora" className="primary" url='e-Shop'/>
+          <Button text="Comprar Ahora" className="primary" url='Tienda'/>
         </div>
         <div className="img_container">
             <img src="./images/oferta.jpg" alt="cerveza" />
