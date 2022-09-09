@@ -15,7 +15,7 @@ const Gift = () => {
               ¡esta Gift Card es la solución!<br /><br />
             </span>
             La manera perfecta de poner una sonrisa en un rostro,<br /> 
-            es regalar unas unas buenas Numen Beer!!!.Entregada directamente en su puerta.<br />
+            es regalar unas buenas Numen Beer!!!.Entregada directamente en su puerta.<br />
             Para comprar para un grupo de personas, póngase en contacto <br /> y podemos discutir 
             paquetes a medida <br />y mensajes personalizados.
           </p>
