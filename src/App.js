@@ -37,7 +37,6 @@ function App() {
             <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </section>
-      {/* <Carrusel/> */}
       <Footer />
     </BrowserRouter>
   );

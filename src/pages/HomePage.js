@@ -3,6 +3,7 @@ import Button from "../components/button/Button";
 import ProductCard from "../components/cards/productsCard/ProductCard";
 import QuickShopCard from "../components/cards/quickshop/quickShopCard";
 import Carrusel from "../components/carrusel/Carrusel";
+import Gift from "../components/gift/Gift";
 import "../styles/HomePage.css";
 
 const beers = [
@@ -58,11 +59,21 @@ const HomePage = (props) => {
           ))}
         </div>
       </div>
+      <Gift/>
       <div className="QS_container">
         <h2>Descubre nuestras variedades</h2>
       </div>
       <div class="productCardContainer">
         <ProductCard />
+      </div>
+      <div className="center_container">
+        <div className="center_image">
+          <div className="center_text">
+            <h2>Te invitamos a conocer nuestra fábrica</h2>
+            <h3>logo</h3>
+            <Button text="Me interesa" className="primary" url='e-Shop'/>
+          </div>
+        </div>
       </div>
       <Carrusel />
     </> 

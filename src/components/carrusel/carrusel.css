@@ -44,7 +44,6 @@
 .title > h2{
 display: flex; 
 justify-content: center;
-text-decoration: none;
 }
 
 .cards {
