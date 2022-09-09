@@ -70,7 +70,7 @@ const HomePage = (props) => {
         <div className="center_image">
           <div className="center_text">
             <h2>Te invitamos a conocer nuestra fábrica</h2>
-            <h3>logo</h3>
+            <img src="./images/Logo NB.png" className="center_logo" alt="cerveza"/>
             <Button text="Me interesa" className="primary" url='e-Shop'/>
           </div>
         </div>
