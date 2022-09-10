@@ -14,6 +14,8 @@ import HomePage from './pages/HomePage';
 import Checkout from './components/checkout/CheckOut'
 // import Carrusel from "./components/carrusel/Carrusel";
 import ProductsPage from './pages/ProductsPage';
+import MessagesPage from './pages/backoffice/messages';
+import MessageDetailsPage from './components/backoffice/messageDetail';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
             <Route path='/checkout' element={<Checkout />} />
             <Route path='/Contacto' element={ <ContactPage/>} />
             <Route path='/backoffice' element={ <SetProductsPage />} />
+            <Route path='/backoffice/message' element={ <MessagesPage />} />
+            <Route path='/backoffice/message/:id' element={ <MessageDetailsPage />} />
             <Route path='/backoffice/productsform' element={ <ProductsForm />} />
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
             <Route path='/register' element={ <RegistrationForm />} />

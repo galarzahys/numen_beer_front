@@ -1,21 +1,22 @@
-import React from "react";
-import { FiEdit } from "react-icons/fi";
+import React, { useEffect } from "react";
+import { AiFillRead } from "react-icons/ai";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { delReq } from "../../helpers/ReqToApi";
 
-const ProductItem = (props) => {
+const MessageItem = (props) => {
 
-  const { data, loadProducts } = props;
+  const { data, loadMessages } = props;
 
   const navigate = useNavigate()
 
+
 // función para eliminar novedad
-  const deleteNew = async (id) => {
+  const deleteMsg = async (id) => {
     try {
-      await delReq(`/products/${id}`);
-      loadProducts()
+      await delReq(`/contacts/${id}`);
+      loadMessages()
     } catch (err) {
       console.log(err);
     }
@@ -25,15 +26,15 @@ const ProductItem = (props) => {
   const confirmDelete = (id) => {
     Swal.fire({
       title: "Estas seguro?",
-      text: "Estas a punto de borrar un producto!",
+      text: "Estas a punto de borrar este mensaje!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, borrar producto!",
+      confirmButtonText: "Si, borrar mensaje!",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteNew(id);
+        deleteMsg(id);
       }
     });
   };
@@ -42,20 +43,18 @@ const ProductItem = (props) => {
     <>
       <tbody>
         <th scope="row" style={{ display: "none" }}>{data.id}</th>
-        <td>{data.name}</td>
-        <td>{data.packaging}</td>
-        <td>{data.category}</td>
-        <td>{data.stock}</td>
-        <td>{data.price}</td>
-        <td><img src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + data.image} style={{ width: "50px", height: "50px" }}/></td>
-        <td>{data.description}</td>
+        <td>{data.firstName} {data.lastName}</td>        
+
+        <td>{data.email}</td>
+        <td>{data.phone}</td>
+        <td>{data.message}</td>
         <td class="acciones">
           
             <MdOutlineDeleteOutline style={{fontSize: "1.2em"}} className="icon" onClick={() => {
               confirmDelete(data.id);
             }}/>
           
-          <FiEdit style={{fontSize: "1.2em"}} className="icon" onClick={() => {navigate(`/backoffice/productsform/${data.id}`)}}/>
+          <AiFillRead style={{fontSize: "1.2em"}} className="icon" onClick={() => {navigate(`/backoffice/message/${data.id}`)}}/>
         </td>
       </tbody>
 
@@ -63,4 +62,4 @@ const ProductItem = (props) => {
   );
 };
 
-export default ProductItem;
+export default MessageItem;

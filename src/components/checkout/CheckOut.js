@@ -19,6 +19,7 @@ import { useStateValue } from '../../context/StateProvider';
 import { useNavigate } from 'react-router-dom';
 import Copyright from '../Copyrights';
 import { Grid } from '@mui/material';
+import { EmailSenderCheckout } from '../../helpers/EmailSender';
 
 const steps = ['Datos de envio', 'Datos de Pago', 'Revisá tu orden!'];
 
@@ -41,11 +42,30 @@ export default function Checkout() {
 
   const navigate = useNavigate()
 
-  const [{ basket, checkout_data, payment_data, activeStep }, dispatch] = useStateValue();
- 
+  const [{ basket, checkout_data, payment_data, user, activeStep }, dispatch] = useStateValue();
 
 
+  const resetData = ()=> {
 
+    let dataEmail = {
+      firstName: user.firstName,
+      email: user.email,
+      buyOrder
+    }
+
+
+    EmailSenderCheckout(dataEmail)
+  dispatch(
+    {
+    type: actionTypes.RESET_DATA,
+    activeStep: 0
+  });
+  navigate("/")
+  }
+
+  let buyOrder = parseInt(Math.random()*100000000);
+
+  console.log(buyOrder)
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,10 +98,10 @@ export default function Checkout() {
                   Gracias por tu compra.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Tu numero de orden es: 2001539. Te enviamos un email con la confirmación de tu compra y en breve te informaremos la fecha de entrega.
+                  Tu numero de orden es: {buyOrder}. Te enviamos un email con la confirmación de tu compra y en breve te informaremos la fecha de entrega.
                 </Typography>
                 <Box style={{ textAling: "center", display: "flex", justifyContent: "center"}} >
-                 <Button variant="contained" color="primary" onClick={()=>navigate("/")} style={{ backgroundColor: "#00382A", color: "#D8EC8A"}}>Volver a la tienda</Button>
+                 <Button variant="contained" color="primary" onClick={()=>resetData()} style={{ backgroundColor: "#00382A", color: "#D8EC8A"}}>Volver a la tienda</Button>
                  </Box>
               </React.Fragment>
             ) : (

@@ -9,6 +9,7 @@ import accounting from 'accounting';
 import { getBasketTotal } from '../../context/reducer';
 import { Box, Button } from '@mui/material';
 import { actionTypes } from '../../context/reducer';
+import { putReq } from '../../helpers/ReqToApi'
 
 
 
@@ -17,32 +18,6 @@ export default function Review() {
   const [{ basket, checkout_data, payment_data, activeStep }, dispatch] = useStateValue();
 
   const cardNumber = payment_data.cardNumber.slice(8, 12);
-
-  const handleBack = () => {
-    dispatch({
-      type: actionTypes.SET_STEP,
-      activeStep: activeStep - 1,
-    });
-  };
-
-  const finishShop = () => {
-    dispatch(
-      {
-      type: actionTypes.RESET_DATA,
-      basket: [],
-      checkout_data: [],
-      payment_data: [],
-      activeStep: 0
-    });
-
-    dispatch({
-      type: actionTypes.SET_STEP,
-      activeStep: activeStep + 1,
-    });
-
-  }
-
-
 
   let unifiedBasket = basket.reduce((acum, actualValue) => {
     const existingItem = acum.find(
@@ -63,6 +38,39 @@ export default function Review() {
 
     return [...acum, actualValue];
   }, []);
+
+  const handleBack = () => {
+    dispatch({
+      type: actionTypes.SET_STEP,
+      activeStep: activeStep - 1,
+    });
+  };
+
+  
+
+  const finishShop =  () => {
+    unifiedBasket.forEach( async (item)=> {
+      const data_im = new FormData();
+      let newStock = item.stock - item.quantity;
+      data_im.append('stock', newStock );
+      const actData = await putReq('/products/'+ item.id, data_im)
+    })
+    dispatch(
+      {
+      type: actionTypes.RESET_DATA,
+      basket: [],
+      checkout_data: [],
+      payment_data: [],
+    });
+
+    dispatch({
+      type: actionTypes.SET_STEP,
+      activeStep: activeStep + 1,
+    });
+
+  }
+
+
 
   return (
     <>

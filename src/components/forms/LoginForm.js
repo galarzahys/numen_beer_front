@@ -46,7 +46,7 @@ export default function LoginForm() {
 
             const {id, firstName, lastName, email, image, roleId } = data.subject
             
-            localStorage.setItem("dataUser", JSON.stringify({id, firstName, lastName, email, image, roleId}))
+            sessionStorage.setItem("dataUser", JSON.stringify({id, firstName, lastName, email, image, roleId}))
 
             dispatch({
                 type: actionTypes.SET_USER,
