@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import accounting from 'accounting';
 import { makeStyles } from "@mui/styles";
-import { Button, Tooltip } from '@mui/material';
+import { Badge, Button, IconButton, Tooltip } from '@mui/material';
 import './ShopCard.css'
 import { useStateValue } from '../../../context/StateProvider';
 import { actionTypes } from '../../../context/reducer';
 import { Box } from '@mui/system';
+import { click } from '@testing-library/user-event/dist/click';
+import { Link } from 'react-router-dom';
 
 
 const ExpandMore = styled((props) => {
@@ -38,15 +37,19 @@ const useStyles = makeStyles((theme)=>({
       alignItems: "center",
       height: "20vh",
       boxShadow: "1px 1px 3px #313843",
-      marginTop: "70px"
+      marginTop: "70px",
+      padding: 0,
   },
+  cardHeader : {
+    padding: "0px",
+},
   
   card : {
       minHeight: "350px",
       maxHeight: "350px"
   },
   img_cont : {
-    height: "150px"
+    height: "180px"
   },
   img : {
     height: "150px"
@@ -55,9 +58,9 @@ const useStyles = makeStyles((theme)=>({
   headCard : {
     minHeight: "50px",
     maxHeight: "50px",
-    alignContent: "center",
-    alignItems: "center",
-    padding: "0px"
+    maxWidth: "20%",
+    textAlign: "left",
+    paddingRight: "10px",
 
 }
 
@@ -68,6 +71,7 @@ export default function ShopCard(props) {
   const classes = useStyles()
 
   const [ {basket}, dispatch ] = useStateValue(); 
+  const [ clickCounter, setClickCounter ] = useState(0)
 
 
   const [expanded, setExpanded] = React.useState(false);
@@ -80,6 +84,7 @@ export default function ShopCard(props) {
   };
 
   const AddToBasket = () => {
+    setClickCounter(clickCounter + 1);
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
       item: {
@@ -97,11 +102,12 @@ export default function ShopCard(props) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }} className={classes.card}>
+    <Card sx={{ maxWidth: 350 }} className={classes.card}>
       <CardHeader
+        className={classes.cardHeader}
         action={
           <Typography /*className={classes.action}*/
-          variant='h5'
+          variant='h6'
           color='textSecondary'
           key={id}
           className={classes.headCard}
@@ -111,16 +117,15 @@ export default function ShopCard(props) {
         subheader={packaging}
       />
       <div
-        component="img"
-        className="img_cont"
-        alt={name}
-      ><img src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + image} className="img_card" /></div>
-      <Box>        <Typography>Stock: {stock} un.</Typography></Box>
+        className={classes.img_cont}
+        style={{ backgroundImage: `url('https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/${image}')`, backgroundSize: "cover"}}
+      ></div>
+      <Box>
+        <Typography style={{ color: "#00382A", fontSize: "0.8em", textDecoration: "none" }}> Stock: {stock} un.</Typography>
+        <Typography>Tu compra: {clickCounter} un.</Typography>
+      </Box>
       <CardActions disableSpacing>
-
-      <Button color="secondary" onClick={AddToBasket}> Sumar al carrito! </Button>
-       
-        
+      <Button style={{ backgroundColor: "#00382A", color: "#D8EC8A", textDecoration: "none" }} onClick={AddToBasket}> Sumar al carrito! </Button>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -142,6 +147,9 @@ export default function ShopCard(props) {
           
         </CardContent>
       </Collapse>
+      <Link to="/micarrito">
+      <Typography style={{ color: "#00382A", fontSize: "0.6em", textDecoration: "none" }}> Ir al carrito</Typography>
+      </Link>
     </Card>
   );
 }
