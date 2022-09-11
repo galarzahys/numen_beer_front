@@ -115,6 +115,7 @@ const deleteAlert = ()=>{
                 </Tooltip>
                 </TableCell>
                 <TableCell>Producto</TableCell>
+                <TableCell align="center">Imagen</TableCell>
                 <TableCell align="center">Cantidad</TableCell>
                 <TableCell align="right">Precio</TableCell>
                 <TableCell align="right">Subtotal</TableCell>
@@ -127,14 +128,15 @@ const deleteAlert = ()=>{
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell>
-                  <Tooltip title="Eliminar fila" placement="left">
-                    <IconButton onClick={()=>removeRow(row.id)}>
-                      <RiDeleteRow style={{ color: "D8EC8A"}} />
+                    <Tooltip title="Eliminar fila" placement="left">
+                      <IconButton onClick={()=>removeRow(row.id)}>
+                        <RiDeleteRow style={{ color: "D8EC8A"}} />
                       </IconButton>
-                      </Tooltip>
-                      </TableCell>
+                    </Tooltip>
+                  </TableCell>
                   <TableCell component="th" scope="row">{row.name}</TableCell>
-                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=> addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
+                  <TableCell align="center"><img src={row.image} alt={row.name} width="50"/></TableCell>
+                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=>   addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
                   <TableCell align="right">{accounting.formatMoney(row.price, "$") }</TableCell>
                   <TableCell align="right">{accounting.formatMoney(getSubtotal(row.quantity, row.price), "$" )}</TableCell>
                 </TableRow>

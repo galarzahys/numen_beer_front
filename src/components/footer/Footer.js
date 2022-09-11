@@ -21,7 +21,7 @@ const Footer = () => {
             <div>
                 <h2>Comparte con amigos</h2>
             </div>
-            <div>
+            <div className='icons'>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faFacebook}/></Link>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faInstagram}/></Link>
                 <Link to="#"><FontAwesomeIcon className='icon' icon={faWhatsapp}/></Link>
@@ -46,7 +46,7 @@ const Footer = () => {
                     <Link className="footer__link" to='Contacto'  element={ <ContactPage/>}>Contacto</Link>
                     </li>
                 </ul>
-            </div>
+        </div>
     </footer>
     </>
   )
