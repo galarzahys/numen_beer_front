@@ -12,6 +12,7 @@ html {
   }
 
   .main_cont {
+    width: 100%;
     margin-bottom: 50px;
   }
 
@@ -25,7 +26,7 @@ html {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 50px;
     margin-bottom: 50px;
   }

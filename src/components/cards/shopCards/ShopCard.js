@@ -46,13 +46,8 @@ const useStyles = makeStyles((theme)=>({
   
   card : {
       minHeight: "350px",
-      maxHeight: "350px"
-  },
-  img_cont : {
-    height: "180px"
-  },
-  img : {
-    height: "150px"
+      maxHeight: "350px",
+      minWidth: "200px"
   },
 
   headCard : {
@@ -102,25 +97,18 @@ export default function ShopCard(props) {
   }
 
   return (
-    <Card sx={{ maxWidth: 350 }} className={classes.card}>
-      <CardHeader
-        className={classes.cardHeader}
-        action={
-          <Typography /*className={classes.action}*/
-          variant='h6'
-          color='textSecondary'
-          key={id}
-          className={classes.headCard}
-          >{accounting.formatMoney(price, "$")}</Typography>
-        }
-        title={name}
-        subheader={packaging}
-      />
+    <div className='SC_container'>
+      <div className="SC_header">
+          <h4>{name}</h4>
+          <h6>{packaging}</h6>        
+          </div>     
       <div
-        className={classes.img_cont}
-        style={{ backgroundImage: `url('https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/${image}')`, backgroundSize: "cover"}}
+        className="SC_image"
+        style={{ backgroundImage: `url('https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/${image}')`}}
       ></div>
+    
       <Box>
+      <h3 style={{ textAlign: "center" }}>{accounting.formatMoney(price, "$")}</h3>
         <Typography style={{ color: "#00382A", fontSize: "0.8em", textDecoration: "none" }}> Stock: {stock} un.</Typography>
         <Typography>Tu compra: {clickCounter} un.</Typography>
       </Box>
@@ -150,7 +138,7 @@ export default function ShopCard(props) {
       <Link to="/micarrito">
       <Typography style={{ color: "#00382A", fontSize: "0.6em", textDecoration: "none" }}> Ir al carrito</Typography>
       </Link>
-    </Card>
+    </div>
   );
 }
 

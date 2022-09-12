@@ -173,7 +173,7 @@ const ResponsiveAppBar = () => {
           </Box> 
           
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Loging">
+            <Tooltip title="Opciones">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {user ? <Avatar alt={user.firstName} src={user ? 'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + user.image : ''} style={{ backgroundColor: "#D8EC8A", color: "#00382A" }}/>:
                 <Button onClick={(e)=> navigate("/login")} style={{ color: "#D8EC8A", fontSize: "0.5em"}}>Ingresar</Button> }
