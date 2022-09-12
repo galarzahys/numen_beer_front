@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { postReq } from '../../helpers/ReqToApi';
 import * as Yup from 'yup';
 import Copyright from '../Copyrights';
+import { EmailSenderRegister } from '../../helpers/EmailSender';
 
 
 
@@ -67,11 +68,13 @@ export default function RegistrationForm() {
       const {data} = await postReq('/auth/register', dataForm)
       await postReq('/auth/login', dataForm)
 
+      EmailSenderRegister(dataForm)
+
       
       const {id, firstName, lastName, email, image, roleId } = data.subject
 
 
-      localStorage.setItem("dataUser", JSON.stringify({id, firstName, lastName, email, image, roleId}))
+      sessionStorage.setItem("dataUser", JSON.stringify({id, firstName, lastName, email, image, roleId}))
 
       navigate('/');
 

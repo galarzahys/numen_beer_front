@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import {Link, useNavigate} from 'react-router-dom';
 import { Badge } from '@mui/material';
 import { actionTypes } from '../context/reducer';
@@ -44,7 +44,7 @@ const ResponsiveAppBar = () => {
           user: null,
         });
 
-        localStorage.clear();
+        sessionStorage.clear();
   };
 
   const handleOpenNavMenu = (event) => {
@@ -175,7 +175,9 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Loging">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar src="./images/user.jpg" />
+                {user ? <Avatar alt={user.firstName} src={user ? 'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + user.image : ''} style={{ backgroundColor: "#D8EC8A", color: "#00382A" }}/>:
+                <Button onClick={(e)=> navigate("/login")} style={{ color: "#D8EC8A", fontSize: "0.5em"}}>Ingresar</Button> }
+                
               </IconButton>
             </Tooltip>
             <Menu
@@ -195,20 +197,29 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
               style={{textDecoration: "none", color:"#00382A", textAlign: "right"}}
             >
+                          {user && user.roleId === 1 ?
+            <MenuItem onClick={handleCloseUserMenu}>
+             <Button color="inherit" onClick={(e)=> navigate("/backoffice")}> Listado de Productos </Button> 
+            </MenuItem>
+            : null}
+            {user && user.roleId === 1 ? 
+            <MenuItem onClick={handleCloseUserMenu}>
+            <Button color="inherit" onClick={(e)=> navigate("/backoffice/message")}> Mensajes </Button> 
+            </MenuItem>
+            : null}
                 <MenuItem onClick={handleCloseUserMenu}>
             {user ? <Button color="inherit" onClick={handleLogout}> Cerrar Sesión </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
             </MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>
-            {user && user.roleId === 1 ? <Button color="inherit" onClick={(e)=> navigate("/backoffice")}> Panel de Control </Button> : ""}
-            </MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>
-            <Button color="inherit" onClick={(e)=> navigate("/register")}> Registrarse </Button>
+
+            {!user ? <MenuItem onClick={handleCloseUserMenu}>
+              <Button color="inherit" onClick={(e)=> navigate("/register")}> Registrarse </Button> 
                 </MenuItem>
+                : null}
             </Menu>
             <IconButton aria-label="show cart items" color="inherit">
               <Link to={"/micarrito"} style={{textDecoration: "none", color:"#D8EC8A"}} >
               <Badge badgeContent={basket?.length} color="warning">
-                <AddShoppingCartIcon/>
+                <ShoppingCartIcon/>
               </Badge>
               </Link>  
             </IconButton>

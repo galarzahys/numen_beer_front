@@ -11,6 +11,9 @@ html {
     font-size: 3rem;
   }
 
+  .main_cont {
+    margin-bottom: 50px;
+  }
 
   .ES_container h2 {
     font-size: 2rem;
@@ -24,6 +27,7 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 
   .secondary {

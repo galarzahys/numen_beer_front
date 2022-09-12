@@ -27,11 +27,6 @@ const beers = [
     name: "BARLEY",
     price: 240,
   },
-  {
-    id: "5",
-    name: "RAUCH",
-    price: 230,
-  },
 ];
 
 const HomePage = (props) => {

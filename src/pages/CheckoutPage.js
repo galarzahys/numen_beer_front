@@ -16,7 +16,7 @@ import { actionTypes } from "../context/reducer";
 import { Box } from "@mui/system";
 import { Badge, Button, IconButton, Tooltip } from "@mui/material";
 import {TiDelete} from 'react-icons/ti'
-import { RiDeleteRow } from 'react-icons/ri'
+import { MdDeleteSweep } from 'react-icons/md'
 import {FiPlusSquare, FiMinusSquare} from 'react-icons/fi'
 import Swal from "sweetalert2";
 
@@ -34,6 +34,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const CheckoutPage = () => {
 
   const [{ basket,}, dispatch] = useStateValue();
+  const [ activeButton, setActiveButton ] = React.useState(false)
 
   let unifiedBasket = basket.reduce((acum, actualValue) => {
     const existingItem = acum.find(
@@ -66,6 +67,8 @@ const CheckoutPage = () => {
     })
   }
 
+  console.log(unifiedBasket)
+
   const removeRow = (id) => {
     dispatch({
       type: actionTypes.DEL_PROD_FROM_BASKET,
@@ -97,6 +100,21 @@ const deleteAlert = ()=>{
   })
 }})};
 
+const overStock = (id)=>{
+  Swal.fire({
+    title: 'Su pedido supera el stock disponible',
+    confirmButtonText: 'Entendido',
+    backgroundColor: "#D8EC8A",
+    color: "#00382A",
+    confirmButtonColor: "#00382A",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      removeItem(id)
+      setActiveButton(true)
+      setTimeout(() =>{
+        setActiveButton(false)
+      }, 5000)
+}})};
 
 
   function FormRow() {
@@ -107,15 +125,14 @@ const deleteAlert = ()=>{
           <Table item xs={12} sm={6} md={3} size="small" style={{ marginLeft: "20px", maxWidth: "95%", padding: "0px"}} aria-label="a dense table">
             <TableHead>
               <TableRow>
-              <TableCell>
-              <Tooltip title="Eliminar compra" placement="top">
-                <IconButton onClick={()=> deleteAlert()}>
-                <TiDelete style={{ fontSize: "1em", color: "#B00000"}} />
-                </IconButton>
-                </Tooltip>
+                <TableCell>
+                  <Tooltip title="Eliminar compra" placement="top">
+                    <IconButton onClick={()=> deleteAlert()}>
+                      <TiDelete style={{ fontSize: "1em", color: "#B00000"}} />
+                    </IconButton>
+                  </Tooltip>
                 </TableCell>
                 <TableCell>Producto</TableCell>
-                <TableCell align="center">Imagen</TableCell>
                 <TableCell align="center">Cantidad</TableCell>
                 <TableCell align="right">Precio</TableCell>
                 <TableCell align="right">Subtotal</TableCell>
@@ -128,15 +145,14 @@ const deleteAlert = ()=>{
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell>
-                    <Tooltip title="Eliminar fila" placement="left">
-                      <IconButton onClick={()=>removeRow(row.id)}>
-                        <RiDeleteRow style={{ color: "D8EC8A"}} />
+                  <Tooltip title="Eliminar fila" placement="left">
+                    <IconButton onClick={()=>removeRow(row.id)}>
+                      <RiDeleteRow style={{ color: "D8EC8A"}} />
                       </IconButton>
-                    </Tooltip>
-                  </TableCell>
+                      </Tooltip>
+                      </TableCell>
                   <TableCell component="th" scope="row">{row.name}</TableCell>
-                  <TableCell align="center"><img src={row.image} alt={row.name} width="50"/></TableCell>
-                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=>   addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
+                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=> addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
                   <TableCell align="right">{accounting.formatMoney(row.price, "$") }</TableCell>
                   <TableCell align="right">{accounting.formatMoney(getSubtotal(row.quantity, row.price), "$" )}</TableCell>
                 </TableRow>

@@ -25,7 +25,7 @@ const ShopPage = (props) => {
 
 
     return (
-      <div className='main_container'>
+      <div className='main_cont'>
         <Box sx={{ flexGrow: 1, justifyContent: "space-around" }}>
           <h1>Numen Beer - Tienda Online</h1>
         <Grid container spacing={1}>

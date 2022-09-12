@@ -4,7 +4,8 @@ import React from "react";
 import { getBasketTotal } from "../context/reducer";
 import accounting from "accounting";
 import { useStateValue } from "../context/StateProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles((theme)=>({
     root : {
@@ -37,18 +38,35 @@ const useStyles = makeStyles((theme)=>({
 
 const Total = () => {
 
-    const [ {basket}, dispatch ] = useStateValue(); 
+    const [ {basket, user}, dispatch ] = useStateValue(); 
+    const navigate = useNavigate();
 
  
+    const finishShop = () => {
+        if (user) {
+            navigate("/checkout")
+        } else {
+            Swal.fire({
+                title: 'Para continuar debes iniciar sesión',
+                showCancelButton: true,
+                confirmButtonText: 'Iniciar sesión',
+                backgroundColor: "#D8EC8A",
+                color: "#00382A",
+                confirmButtonColor: "#00382A",
+                cancelButtonText: 'Cancelar',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                 navigate("/login")
+            }})};
+        }
+    
 
     const classes = useStyles()
     return (
         <div className={classes.root}>
             <h5>Total items : {basket?.length}</h5>
         <h3 className={classes.amount}>{accounting.formatMoney(getBasketTotal(basket), "$" )}</h3>
-        <Link to={"/checkout"} style={{ textDecoration: "none"}}>
-        <Button className={classes.button} variant="contained">Finalizar Compra</Button>
-        </Link>
+        <Button onClick={()=>finishShop()} className={classes.button} variant="contained">Finalizar Compra</Button>
         </div>
     )
 }
