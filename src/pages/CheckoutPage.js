@@ -125,12 +125,12 @@ const overStock = (id)=>{
           <Table item xs={12} sm={6} md={3} size="small" style={{ marginLeft: "20px", maxWidth: "95%", padding: "0px"}} aria-label="a dense table">
             <TableHead>
               <TableRow>
-              <TableCell>
-              <Tooltip title="Eliminar compra" placement="top">
-                <IconButton onClick={()=> deleteAlert()}>
-                <TiDelete style={{ fontSize: "1em", color: "#B00000"}} />
-                </IconButton>
-                </Tooltip>
+                <TableCell>
+                  <Tooltip title="Eliminar compra" placement="top">
+                    <IconButton onClick={()=> deleteAlert()}>
+                      <TiDelete style={{ fontSize: "1em", color: "#B00000"}} />
+                    </IconButton>
+                  </Tooltip>
                 </TableCell>
                 <TableCell>Producto</TableCell>
                 <TableCell align="center">Cantidad</TableCell>
@@ -147,19 +147,12 @@ const overStock = (id)=>{
                   <TableCell>
                   <Tooltip title="Eliminar fila" placement="left">
                     <IconButton onClick={()=>removeRow(row.id)}>
-                      <MdDeleteSweep style={{ color: "D8EC8A"}} />
+                      <RiDeleteRow style={{ color: "D8EC8A"}} />
                       </IconButton>
                       </Tooltip>
                       </TableCell>
                   <TableCell component="th" scope="row">{row.name}</TableCell>
-                  <TableCell align="center">
-                    <IconButton onClick={()=> removeItem(row.id)} >
-                      <FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> 
-                    </IconButton>{row.quantity}{row.quantity > row.stock ? overStock(row.id) : ""}
-                    <IconButton disabled={activeButton} onClick={()=> addItem(row.id) }>
-                      <FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/>
-                    </IconButton>
-                  </TableCell>
+                  <TableCell align="center"><IconButton onClick={()=> removeItem(row.id)} ><FiMinusSquare style={{ fontSize: "1em", color: "#00382A"}}/> </IconButton>{row.quantity}<IconButton onClick={()=> addItem(row.id) }><FiPlusSquare style={{ fontSize: "1em", color: "#00382A"}}/></IconButton></TableCell>
                   <TableCell align="right">{accounting.formatMoney(row.price, "$") }</TableCell>
                   <TableCell align="right">{accounting.formatMoney(getSubtotal(row.quantity, row.price), "$" )}</TableCell>
                 </TableRow>
