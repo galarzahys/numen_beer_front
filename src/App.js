@@ -16,6 +16,7 @@ import Checkout from './components/checkout/CheckOut'
 import ProductsPage from './pages/ProductsPage';
 import MessagesPage from './pages/backoffice/messages';
 import MessageDetailsPage from './components/backoffice/messageDetail';
+import ProductCard from './components/cards/productsCard/ProductCard';
 
 function App() {
   return (
