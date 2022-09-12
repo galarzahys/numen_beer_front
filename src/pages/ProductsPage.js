@@ -1,39 +1,16 @@
-import React, { useState } from 'react';
-import { getReq } from '../helpers/ReqToApi';
+import React from "react";
+import ProductCard from "../components/cards/productsCard/ProductCard";
+import "../styles/ProductsPage.css";
 
-
-
-
-const ProductsPage = (props) => {
-
-    const [loading, setLoading] = useState(false);
-    const [products, setProducts] = useState([]);
-
-    const loadProducts = async () => {
-        setLoading(true);
-        const response = await getReq(`/products`);
-        setProducts(response.data);
-        setLoading(false);
-      };
-
-    return (
-        <div className='main_container'>
-            <h1>Productos</h1>
-           {loading ? (
-          <p>Cargando...</p>
-        ) : ( products.map(item => {
-            return (
-                <div>
-            <h2>{item.name}</h2>
-            <p>{item.price}</p>
-            </div>
-            )
-        })
-            
-    )};
-        
-        </div>
-    )
-}
+const ProductsPage = () => {
+  return (
+    <div>
+      <h1 className="title">Nuestros productos</h1>
+      <div className="productCardContainer">
+        <ProductCard />
+      </div>
+    </div>
+  );
+};
 
 export default ProductsPage;
