@@ -16,7 +16,7 @@ import { actionTypes } from "../context/reducer";
 import { Box } from "@mui/system";
 import { Badge, Button, IconButton, Tooltip } from "@mui/material";
 import {TiDelete} from 'react-icons/ti'
-import { MdDeleteSweep } from 'react-icons/md'
+import { RiDeleteRow } from 'react-icons/ri'
 import {FiPlusSquare, FiMinusSquare} from 'react-icons/fi'
 import Swal from "sweetalert2";
 
