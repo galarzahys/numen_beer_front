@@ -31,13 +31,13 @@ const beers = [
 
 const HomePage = (props) => {
   return (
-<>
+    <>
       <div className="welcome_container">
         <div className="welcome_image">
           <div className="welcome_text">
             <h1>Numen Beer</h1>
             <h3>Compartimos el código de una buena cerveza</h3>
-            <Button text="Conocé más" className="primary" url='e-Shop'/>
+            <Button text="Conocé más" className="primary" url="e-Shop" />
           </div>
         </div>
       </div>
@@ -54,24 +54,29 @@ const HomePage = (props) => {
           ))}
         </div>
       </div>
-      <Gift/>
+      <Gift />
       <div className="QS_container">
         <h2>Descubre nuestras variedades</h2>
-      </div>
-      <div class="productCardContainer">
-        <ProductCard />
+
+        <div class="productCardContainer">
+          <ProductCard />
+        </div>
       </div>
       <div className="center_container">
         <div className="center_image">
           <div className="center_text">
             <h2>Te invitamos a conocer nuestra fábrica</h2>
-            <img src="./images/Logo NB.png" className="center_logo" alt="cerveza"/>
-            <Button text="Me interesa" className="primary" url='e-Shop'/>
+            <img
+              src="./images/Logo NB.png"
+              className="center_logo"
+              alt="cerveza"
+            />
+            <Button text="Me interesa" className="primary" url="e-Shop" />
           </div>
         </div>
       </div>
       <Carrusel />
-    </> 
+    </>
   );
 };
 

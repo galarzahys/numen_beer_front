@@ -41,14 +41,14 @@ const ProductCard = (props) => {
       <div class="card-text">
         <h3>{item.name}</h3>
         <p>
-          {item.description}
+          {item.description.slice(0,80)+"..."}
         </p>
-        <Button style={{marginBottom:'0'}} text="Conocer más" className="secondary" />  
+        <Button url='Productos' style={{marginBottom:'0'}} text="Conocer más" className="secondary" />  
       </div>
     </div>
   
       ))
-  );
+  ); 
 };
 
 export default ProductCard;
