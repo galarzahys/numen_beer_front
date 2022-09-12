@@ -26,8 +26,10 @@ const ProductsPage = () => {
 
 
   return  ( 
+
     <>
     <h1 className="title">Nuestros productos</h1>
+    <div class="productCardContainer">
     {loading ? "Cargando..." : prodata.map(item => (
     <div class="ProductCard">
       <div
@@ -46,7 +48,8 @@ const ProductsPage = () => {
     </div>
    
       ))}
-      </>  
+      </div> 
+      </>
   );
 };
 
