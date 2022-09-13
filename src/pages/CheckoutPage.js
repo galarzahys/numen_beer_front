@@ -120,7 +120,7 @@ const overStock = (id)=>{
   function FormRow() {
     return (
 
-        <Box sx={{ flexGrow: 1 }} style={{marginBottom: "20px"}}>
+        <Box sx={{ flexGrow: 1 }} style={{marginBottom: "20px", marginTop: "20px"}}>
         <TableContainer component={Paper}  style={{ marginLeft: "20px", maxWidth: "95%", padding: "0px"}}>
           <Table item xs={12} sm={6} md={3} size="small" style={{ marginLeft: "20px", maxWidth: "95%", padding: "0px"}} aria-label="a dense table">
             <TableHead>
@@ -169,7 +169,7 @@ const overStock = (id)=>{
     <div>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography align="center" style={{ marginBottom: "50px"}} gutterBottom variant="h4">
+          <Typography align="center" style={{ marginBottom: "50px", marginTop: "30px"}} gutterBottom variant="h4">
             Mi compra
           </Typography>
         </Grid>
