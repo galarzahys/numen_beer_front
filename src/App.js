@@ -17,6 +17,8 @@ import ProductsPage from './pages/ProductsPage';
 import MessagesPage from './pages/backoffice/messages';
 import MessageDetailsPage from './components/backoffice/messageDetail';
 import ProductCard from './components/cards/productsCard/ProductCard';
+import SetCarrousel from './pages/backoffice/setCarrousel';
+import SlideForm from './components/backoffice/slideForm';
 
 function App() {
   return (
@@ -37,6 +39,9 @@ function App() {
             <Route path='/backoffice/message/:id' element={ <MessageDetailsPage />} />
             <Route path='/backoffice/productsform' element={ <ProductsForm />} />
             <Route path='/backoffice/productsform/:id' element={ <ProductsForm />} />
+            <Route path='/backoffice/slideform' element={ <SlideForm />} />
+            <Route path='/backoffice/slideform/:id' element={ <SlideForm />} />
+            <Route path='/backoffice/setcarrousel' element={ <SetCarrousel />} />
             <Route path='/register' element={ <RegistrationForm />} />
             <Route path='/login' element={ <LoginForm />} />
             <Route path="*" element={<Navigate replace to="/" />} />

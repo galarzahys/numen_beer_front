@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { dataSlick } from './carruselData';
 import './carrusel.css';
-import { Link } from 'react-router-dom';
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { getReq } from "../../helpers/ReqToApi";
 
 
 // botones personalizados 
@@ -29,6 +29,25 @@ const NextBtn = (props) => {
 };
 
 const Carrusel = () => {
+
+  const [ carrouselData, setCarrouselData ] = useState([])
+
+
+  const getCarrouselData = async () => {
+    try {
+      const response = await getReq('/carrousel');
+      setCarrouselData(response.data)
+
+    } catch (error) {
+      console.log (error)
+    };
+  }
+
+  useEffect(() => {
+    getCarrouselData();
+  }, []);
+
+
 
     const settings = {
         dots: true,
@@ -75,12 +94,12 @@ const Carrusel = () => {
           <h2>@Numen Beer en Instagram</h2>
         </div>
         <Slider {...settings}>
-          {dataSlick.map(item =>(
-                <figure className="cards">
+          {carrouselData.map(item =>(
+                <figure className="cards" key={item.id}>
                   <div className="cards_img">
-                    <img src={item.linkImg} alt={item.title} />
+                    <img src={'https://s3.sa-east-1.amazonaws.com/g4-numen-bucket/' + item.image} alt={item.title} />
                   </div>
-                  <h5>{item.frase}</h5>
+                  <h5>{item.phrase}</h5>
                 </figure>
               )
             )

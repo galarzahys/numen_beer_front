@@ -207,6 +207,11 @@ const ResponsiveAppBar = () => {
             <Button color="inherit" onClick={(e)=> navigate("/backoffice/message")}> Mensajes </Button> 
             </MenuItem>
             : null}
+                        {user && user.roleId === 1 ? 
+            <MenuItem onClick={handleCloseUserMenu}>
+            <Button color="inherit" onClick={(e)=> navigate("/backoffice/setcarrousel")}> Modificar Carrousel </Button> 
+            </MenuItem>
+            : null}
                 <MenuItem onClick={handleCloseUserMenu}>
             {user ? <Button color="inherit" onClick={handleLogout}> Cerrar Sesión </Button> : <Button color="inherit" onClick={(e)=> navigate("/login")}> Login </Button>}
             </MenuItem>
