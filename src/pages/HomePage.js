@@ -1,35 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/button/Button";
 import ProductCard from "../components/cards/productsCard/ProductCard";
 import QuickShopCard from "../components/cards/quickshop/quickShopCard";
 import Carrusel from "../components/carrusel/Carrusel";
 import Gift from "../components/gift/Gift";
+import { getReq } from "../helpers/ReqToApi";
 import "../styles/HomePage.css";
 
-const beers = [
-  {
-    id: "1",
-    name: "IPA",
-    price: "220",
-  },
-  {
-    id: "2",
-    name: "APA",
-    price: 260,
-  },
-  {
-    id: "3",
-    name: "PILSNER",
-    price: 220,
-  },
-  {
-    id: "4",
-    name: "BARLEY",
-    price: 240,
-  },
-];
-
 const HomePage = (props) => {
+
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+
+  const loadProducts = async () => {
+    setLoading(true);
+    const response = await getReq(`/products`);
+    setProducts(response.data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const prodShort = products.slice(0, 4)
+
   return (
     <>
       <div className="welcome_container">
@@ -44,12 +39,9 @@ const HomePage = (props) => {
       <div className="QS_container">
         <h2>Ofertas del día</h2>
         <div className="QS_cardContainer">
-          {beers.map((item) => (
+          {prodShort.map((item) => (
             <QuickShopCard
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              image={item.name}
+            id={item.id} name={item.name} packaging={item.packaging} stock={item.stock} price={item.price} description={item.description} image={item.image}
             />
           ))}
         </div>
