@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosService = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3000/",
+  baseURL: process.env.REACT_APP_API_URL || "https://numen-beer.herokuapp.com/",
 });
 
 export const getToken = () => {
